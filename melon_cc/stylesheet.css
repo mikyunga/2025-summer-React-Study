@@ -1,0 +1,10 @@
+body {
+  line-height: 1;
+  background-color: black;
+  color: white;
+  margin: 20px 0px;
+  font-family: 'Pretendard', sans-serif;
+}
+button {
+  font-family: 'Pretendard', sans-serif;
+}

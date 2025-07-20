@@ -1,3 +1,176 @@
-body {
-  line-height: 1;
+/* 헤더 */
+.header {
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin: 0px 20px;
+  gap: 0.35rem;
+}
+
+.standardTime {
+  font-size: 12px;
+  color: #b1b1b1;
+}
+
+.chartAll {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: centers;
+  align-items: center;
+}
+
+.melonChartHead {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+.melonChartTitle {
+  font-weight: 600;
+}
+.ChartIcon {
+  width: 0.8rem;
+}
+.allView {
+  font-size: 12px;
+  color: #b1b1b1;
+  cursor: pointer;
+}
+
+/* nav 카테고리들 */
+.nav {
+  margin: 12px 0px;
+  margin-left: 20px;
+  height: 30px;
+  overflow-x: scroll;
+
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.nav::-webkit-scrollbar {
+  display: none;
+}
+.nav > button {
+  width: auto;
+  height: 29px;
+  background-color: rgba(0, 0, 0, 0);
+
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: white;
+  font-size: 11px;
+  text-align: center;
+  font-weight: 200;
+  padding: 4px 15px;
+}
+.nav > button:active {
+  background-color: #56bc4c;
+}
+.nav > button:hover {
+  background-color: #56bc4c;
+}
+.nav > .category1 {
+  background-color: #56bc4c;
+}
+.nav > .moreView {
+  border: 0.5px solid rgba(102, 255, 102, 0.5);
+  color: #66ff66;
+}
+
+/* 곡들 전체 */
+.main {
+  margin-left: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+.main::-webkit-scrollbar {
+  display: none;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 225px;
+}
+.perSong {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+  height: 40px;
+  width: 330px;
+}
+
+/* 곡 세부 */
+.albumCover {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+}
+.rankSection {
+  height: 100%;
+  width: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.songInfo {
+  height: 100%;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  justify-content: center;
+}
+.songName {
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+}
+.singer {
+  color: #b8b8b8;
+  font-size: 12px;
+  font-weight: 200;
+  overflow: hidden;
+  text-overflow: ellipsis; /*...처리*/
+  white-space: nowrap; /* 한줄로 표시 */
+}
+.playIcon {
+  width: 16px;
+}
+
+/* 전체 듣기 */
+.footer {
+  margin: 20px;
+  /* height: 50px; */
+}
+.allListenBtn {
+  width: 100%;
+  height: 45px;
+  background-color: #2a2a2a;
+  border: none;
+  border-radius: 3px;
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  color: white;
+}
+
+.allListenIcon {
+  width: 20px;
+}
+
+.allListenText {
+  font-size: 15px;
+  font-weight: 200;
 }
