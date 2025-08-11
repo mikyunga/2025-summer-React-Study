@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://font.elice.io/css?family=Elice+DX+Neolli"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Day 3. Search Bar</title>
+  </head>
+  <body>
+    <main>
+      <form
+        class="search"
+        target="_blank"
+        action="https://search.naver.com/search.naver"
+      >
+        <input
+          class="search__input"
+          id="query"
+          type="text"
+          placeholder="검색하기..."
+          name="query"
+        />
+        <label class="search__label" for="query">
+          <span class="material-symbols-outlined"> search </span>
+        </label>
+        <button class="search__button" type="submit">검색</button>
+      </form>
+      <div class="search-render">
+        "<strong id="keyword"></strong>" 검색 중...
+      </div>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css" />
+  </head>
+  <body>
+    <button id="listButton">포스트 리스트 불러오기</button>
+    <button id="userButton">유저정보 불러오기</button>
+    <ul id="list-container"></ul>
+    <div id="detail-container"></div>
+    <script src="main.js"></script>
+    <script>
+      const listBtn = document.getElementById('listButton');
+      const detailBtn = document.getElementById('detailButton');
+      const userBtn = document.getElementById('userButton');
+      const ul = document.getElementById('list-container');
+      // 포스트 리스트
+      listBtn.addEventListener('click', async () => {
+        let postList;
+        try {
+          const response = await fetch(`${API}posts`, {
+            method: 'GET',
+          });
+          postList = await response.json();
+
+          // 화면에 랜더링
+
+          for (let i = 0; i < postList.length; i++) {
+            const post = postList[i];
+
+            const li = document.createElement('li');
+            li.setAttribute('id', `list-${post.id}`);
+            // 지피티의도움을받음 data-id ... 를 만드는 아이디어?,, 불러오는법..?
+            li.setAttribute('data-id', String(post.id));
+            li.setAttribute('style', 'margin: 70px 50px');
+
+            const h3 = document.createElement('h3');
+            h3.setAttribute('style', 'cursor: pointer');
+            h3.setAttribute('data-id', String(post.id));
+            h3.innerText = `Title: ${post.title}`;
+
+            const hr1 = document.createElement('hr');
+
+            const pUser = document.createElement('p');
+            pUser.setAttribute('data-id', String(post.id));
+            pUser.setAttribute('data-userId', String(post.userId));
+            pUser.innerText = `userId: ${post.userId}`;
+
+            const hr2 = document.createElement('hr');
+
+            const pBody = document.createElement('p');
+            pBody.innerText = `Body: ${post.body}`;
+
+            li.append(h3, hr1, pUser, hr2, pBody);
+            ul.appendChild(li);
+
+            // 포스트 디테일
+            h3.addEventListener('click', async () => {
+              const Id = h3.dataset.id;
+              const detailContainer =
+                document.getElementById('detail-container');
+              try {
+                // posts/id 정보 불러오기
+                const detailResponse = await fetch(`${API}posts/${Id}`, {
+                  method: 'GET',
+                });
+                const postDetail = await detailResponse.json();
+
+                // post/id/comment 정보 불러오기
+                const commentResponse = await fetch(
+                  `${API}posts/${Id}/comments`,
+                  {
+                    method: 'GET',
+                  }
+                );
+                const postDetailComment = await commentResponse.json();
+
+                // 디테일 정보 html추가
+                const detailLi = document.createElement('li');
+                detailLi.setAttribute('style', 'margin: 70px 50px');
+                detailLi.innerHTML = `
+                <h3 style='cursor: pointer'>Title: ${postDetail.title}</h3>
+                <hr>
+                <p>userId: ${postDetail.userId}</p>
+                <hr>
+                <p style='margin-bottom:70px'>Body: ${postDetail.body}</p>
+                <hr>
+                <hr>
+                `;
+
+                // 코멘트 정보 html추가
+                const detailCommentUl = document.createElement('ui');
+                for (let i = 0; i < postDetailComment.length; i++) {
+                  commentId = postDetailComment[i];
+                  const li = document.createElement('li');
+                  li.setAttribute('style', 'margin: 70px 50px');
+                  li.innerHTML = `
+                  <p>postId: ${commentId.postId}</p>
+                  <hr>
+                  <p>name: ${commentId.name}</p>
+                  <hr>
+                  <p>email: ${commentId.email}</p>
+                  <hr>
+                  <p>Body: ${commentId.body}</p>
+                  `;
+                  detailCommentUl.appendChild(li);
+                }
+                detailContainer.appendChild(detailLi);
+                detailContainer.appendChild(detailCommentUl);
+                ul.remove();
+              } catch (e) {
+                console.error(e);
+              }
+            });
+          }
+        } catch (e) {
+          console.error(e);
+        } finally {
+          console.log(postList);
+        }
+      });
+
+      userBtn.addEventListener('click', async () => {
+        let userList;
+        try {
+          const response = await fetch(`${API}users`, {
+            method: 'GET',
+          });
+          userList = await response.json();
+        } catch (e) {
+          console.error(e);
+        } finally {
+          console.log(userList);
+        }
+      });
+    </script>
+  </body>
+</html>

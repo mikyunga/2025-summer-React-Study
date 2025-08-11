@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css" />
+  </head>
+  <body>
+    <ul id="list-container"></ul>
+    <script src="main.js"></script>
+    <script>
+      async function listRender() {
+        let postList;
+        try {
+          const response = await fetch(`${API}posts`, {
+            method: 'GET',
+          });
+          postList = await response.json();
+          const postId = postList.id;
+          // 화면에 랜더링
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      async function postDetailRender() {
+        let postDetail;
+        const postId = await listRender();
+        try {
+          const response = await fetch(`${API}posts/${postId}`, {});
+          console.log(response);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      listRender();
+    </script>
+  </body>
+</html>

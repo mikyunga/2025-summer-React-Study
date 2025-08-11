@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="request">요청 보내기</button>
+    <p id="response"></p>
+    <script>
+      const requestBtn = document.getElementById('request');
+      const responseText = document.getElementById('response');
+
+      requestBtn.addEventListener('click', () => {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
+        // xhr.setRequestHeader("","")
+
+        // 3-1
+        // 비동기라 시작만하고 다음으로 넘어감, 요청?보내기
+        xhr.send();
+
+        // 연결이 지속되는 과정속에서 조금이라도 변경되면 실행됨
+        // DONE으로 바뀌지 않으면, return
+        // 바로 실행
+        xhr.onreadystatechange =
+          // 3-2
+          // 이벤트 실행
+          () => {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return;
+
+            if (xhr.status === 200) {
+              console.log(JSON.parse(xhr.response));
+
+              // 직렬화/역직렬화의 이유: 다른 컴퓨터로의 데이터 전송시에는 무조건 '텍스트' 형태로 전송해야 하는데, 자바스크립트 코드 내에서는 객체 형태로 사용되어야 한다.
+              // 직렬화: 나중에 자바스크립트 객체로 변화하기 편한 형태로 객체를 텍스트화 시키는 것
+              // 직렬화의 조건
+              // 1. 객체를 문자열로 변환
+              // 2. 나중에 역직렬화가 가능하도록 규칙을 지켜 변환
+              console.log(JSON.stringify({ name: 'miKyung' })); //객체 -> 텍스트
+
+              // 역직렬화: 직렬화된 텍스트를 자바스크립트 객체 형태로 변환하는 것
+              console.log(JSON.parse('{ "name": "miKyung" }')); //텍스트 -> 객체
+
+              const todoData = JSON.parse(xhr.response);
+              responseText.innerText = todoData.title;
+
+              // 3-3
+              // ex) 유저 정보 받아오기 (userId를 먼저 받아오지 않으면 진행불가능)
+            }
+          };
+      });
+    </script>
+  </body>
+</html>
