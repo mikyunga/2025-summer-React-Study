@@ -15,13 +15,6 @@ function refrestChartTabs() {
     const newButton = document.createElement('button');
     newButton.innerText = title;
 
-    // 스타일 조작
-    // newButton.style.all = 'unset';
-
-    // 클래스 조작
-    // newButton.className = 'tab-btn';
-    // newButton.className = 'asfsdds';
-
     // 클래스 리스트
     newButton.classList.add('tab-btn');
     if (currentTab === id) {
@@ -47,14 +40,6 @@ function refrestChartTabs() {
     chartTabs.prepend(newButton);
   });
 }
-
-// 자바스크립트로 hover하는법 (비추천)
-// newButton.addEventListener('mouseenter', (event) => {
-//   event.target.classList.add('active');
-// });
-// newButton.addEventListener('mouseleave', (event) => {
-//   event.target.classList.remove('active');
-// });
 
 // 탭버튼을 누를때마다 실행됨 = 재활용가능 => 함수로만들자!
 function refreshChart() {
@@ -113,67 +98,3 @@ function init() {
 }
 
 init();
-
-// 차트목록생성하기 (복잡)
-// musics.forEach((musicId, index) => {
-//   const foundMusic = musicsData.find(({ id }) => id === musicId);
-
-//   const chartItem = document.createElement('div');
-//   chartItem.classList.add('chart-item');
-
-//   const chartItemImg = document.createElement('img');
-//   chartItemImg.classList.add('chart-item__img');
-//   chartItemImg.setAttribute('src', `img/${foundMusic.coverImg}`);
-//   chartItemImg.setAttribute('alt', foundMusic.title);
-//   console.log(chartItemImg.attributes);
-
-//   const chartItemRankGroup = document.createElement('div');
-//   chartItemRankGroup.classList.add('chart-item__rank-group');
-
-//   const chartItemRank = document.createElement('span');
-//   chartItemRank.classList.add('chart-item__rank');
-//   chartItemRank.innerText = index + 1;
-
-//   const chartItemRankSame = document.createElement('div');
-//   chartItemRankSame.classList.add('rank-same');
-//   chartItemRankSame.innerText = '-';
-
-//   const chartItemAlbum = document.createElement('div');
-//   chartItemAlbum.classList.add('chart-item__album');
-
-//   const chartItemTitle = document.createElement('p');
-//   chartItemTitle.classList.add('chart-item__title');
-//   chartItemTitle.innerText = foundMusic.title;
-
-//   const chartItemArtist = document.createElement('span');
-//   chartItemArtist.classList.add('chart-item__artist');
-//   // chartItemArtist.innerText = foundMusic.authors.reduce(
-//   //   (acc, author, index) =>
-//   //     acc + author + (foundMusic.authors.length === index + 1 ? '' : ', '),
-//   //   ''
-//   // );
-//   chartItemArtist.innerText = foundMusic.authors.join(', ');
-//   console.log(chartItemArtist.innerText);
-
-//   const chartItemPlay = document.createElement('button');
-//   chartItemPlay.classList.add('chart-item__play');
-
-//   const chartItemPlayImg = document.createElement('img');
-//   chartItemPlayImg.setAttribute('src', 'img/play.png');
-//   chartItemPlayImg.setAttribute('alt', 'play button');
-
-//   chartItemRankGroup.append(chartItemRank);
-//   chartItemRankGroup.append(chartItemRankSame);
-
-//   chartItemAlbum.append(chartItemTitle);
-//   chartItemAlbum.append(chartItemArtist);
-
-//   chartItemPlay.append(chartItemPlayImg);
-
-//   chartItem.append(chartItemImg);
-//   chartItem.append(chartItemRankGroup);
-//   chartItem.append(chartItemAlbum);
-//   chartItem.append(chartItemPlay);
-
-//   chartContainer.append(chartItem);
-// });
