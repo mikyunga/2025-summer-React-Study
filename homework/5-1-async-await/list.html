@@ -79,7 +79,7 @@
                 const postDetailComment = await commentResponse.json();
 
                 // 디테일 정보 html추가
-                const detailLi = document.createElement('li');
+                const detailLi = document.createElement('div');
                 detailLi.setAttribute('style', 'margin: 70px 50px');
                 detailLi.innerHTML = `
                 <h3 style='cursor: pointer'>Title: ${postDetail.title}</h3>
@@ -92,7 +92,7 @@
                 `;
 
                 // 코멘트 정보 html추가
-                const detailCommentUl = document.createElement('ui');
+                const detailCommentUl = document.createElement('ul');
                 for (let i = 0; i < postDetailComment.length; i++) {
                   commentId = postDetailComment[i];
                   const li = document.createElement('li');
