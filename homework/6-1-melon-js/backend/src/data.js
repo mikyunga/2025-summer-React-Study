@@ -1,6 +1,6 @@
 // Fake DB
 // 카테고리들
-const chartsData = [
+export const chartsData = [
   {
     id: 1,
     title: 'TOP100',
@@ -46,7 +46,7 @@ const chartsData = [
 ];
 
 // 노래 정보
-const musicsData = [
+export const musicsData = [
   {
     id: 1,
     title: 'Golden',

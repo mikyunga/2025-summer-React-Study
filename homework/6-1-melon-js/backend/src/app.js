@@ -1,8 +1,10 @@
 import express from 'express';
-import chartsRouter from './routes/chartsRouter';
-import musicsRouter from './routes/musicsRouter';
+import cors from 'cors';
+import chartsRouter from './routes/chartsRouter.js';
+import musicsRouter from './routes/musicsRouter.js';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/charts', chartsRouter);

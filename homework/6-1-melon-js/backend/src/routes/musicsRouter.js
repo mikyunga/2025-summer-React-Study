@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import musicsData from '../../../frontend/data';
+import { musicsData } from '../data.js';
 
 const musicsRouter = Router();
 // Read
@@ -21,11 +21,6 @@ const musicsRouter = Router();
  *      ]
  */
 musicsRouter.get('/', (req, res) => {
-  return res.json({
-    status: 'success',
-    message: 'read successfully',
-    data: musicsData,
-  });
+  return res.json(musicsData);
 });
-
 export default musicsRouter;
