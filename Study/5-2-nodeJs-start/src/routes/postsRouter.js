@@ -14,16 +14,15 @@ const postsRouter = Router();
  * - response
  *
  */
-postsRouter.post('/', (req, res) => {
+postsRouter.post('/', (req, res, next) => {
   // 1단계: Req 객체의 정보를 바탕으로 필요한 작업 수행
   const { title, content } = req.body;
 
   // 유효성 검사 ********중요*********
   if (!title || !content)
-    return res.status(400).json({
-      status: 'failed',
-      message: 'title and content must exist',
-    });
+    return res
+      .status(400)
+      .json(next(new Error('title and content must exist')));
 
   posts.push({
     id: posts[posts.length - 1].id + 1,
