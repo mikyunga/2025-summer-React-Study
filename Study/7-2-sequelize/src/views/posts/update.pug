@@ -1,0 +1,10 @@
+extends ../layout 
+
+block content 
+    h1 게시글 수정
+    form(action=`/posts/${post.id}/update`, method="post") 
+        label(for="title") 제목
+        input#title(type="text", name="title", value=post.title)
+        label(for="content") 내용
+        textarea#content(name="content")=post.content
+        button 수정

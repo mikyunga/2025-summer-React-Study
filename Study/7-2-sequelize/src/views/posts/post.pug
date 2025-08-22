@@ -1,0 +1,12 @@
+extends ../layout 
+
+block content 
+    h1=post.title 
+    form(action=`/posts/${post.id}/update`, method="GET") 
+        button 수정하기
+    form(action=`/posts/${post.id}/delete`, method="POST") 
+        button 삭제하기
+    hr
+    p=post.content
+    hr
+    a(href="/posts") 목록으로
