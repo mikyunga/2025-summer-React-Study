@@ -21,6 +21,10 @@ const musicsRouter = Router();
  *      ]
  */
 musicsRouter.get('/', (req, res) => {
-  return res.json(musicsData);
+  return res.json({
+    status: 'success',
+    message: 'read successfully',
+    data: musicsData,
+  });
 });
 export default musicsRouter;

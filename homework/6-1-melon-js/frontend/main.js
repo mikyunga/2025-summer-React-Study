@@ -13,17 +13,36 @@ const timeText = document.getElementById('timeText');
 let currentTab = 1;
 
 // 쿼리파라미터로 URL에서 Id뽑아오기
-// const paramsString = window.location.search;
-// const searchParams = new URLSearchParams(paramsString);
-// const chartId = searchParams.get('chartId');
+const paramsString = window.location.search;
+const searchParams = new URLSearchParams(paramsString);
+let chartId = 1;
+if (chartId != null) {
+  chartId = searchParams.get('chartId');
+}
 
 // chartsData fetch하는 함수
 async function fetchChartsData() {
   try {
     const response = await fetch(`${API}/charts`);
-    const chartsData = await response.json();
+    const responseJson = await response.json();
+    // data만 꺼내오기
+    const chartsData = responseJson.data;
 
     return chartsData;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+// chartData fetch하는 함수
+async function fetchChartData(chartId) {
+  try {
+    const response = await fetch(`${API}/charts/${chartId}`);
+    const responseJson = await response.json();
+    // data만 꺼내오기
+    const chartData = responseJson.data;
+
+    return chartData;
   } catch (e) {
     console.log(e);
   }
@@ -33,7 +52,9 @@ async function fetchChartsData() {
 async function fetchMusicsData() {
   try {
     const response = await fetch(`${API}/musics`);
-    const musicsData = await response.json();
+    const responseJson = await response.json();
+    // data만 꺼내오기
+    const musicsData = responseJson.data;
 
     return musicsData;
   } catch (e) {
@@ -55,9 +76,11 @@ function refreshChartTabs(copyChartsData, musicsData) {
 
       // 클릭 이벤트 부여
       // 코드 예약
-      newButton.addEventListener('click', () => {
+      newButton.addEventListener('click', async (event) => {
         currentTab = id;
-
+        // 탭 변동 시 다시 fetchChartData를 호출해야한다는 해결법을 찾지못해서 지피티의 도움을받음 ...
+        // 근데 이걸 넣었더니 아래에 event.target 어쩌고에서 오류가나더라고요? 그래서 걍 event를 인자로 넣어봤는데 해결됨. 럭키비키
+        const newChartData = await fetchChartData(currentTab);
         // document가 아닌 chartTabs에서의 className tab-btn을 찾음
         const tabs = chartTabs.getElementsByClassName('tab-btn');
         const tabsArr = [...tabs];
@@ -65,8 +88,7 @@ function refreshChartTabs(copyChartsData, musicsData) {
           tabNode.classList.remove('active');
         });
         event.target.classList.add('active');
-
-        refreshChart(copyChartsData, musicsData);
+        refreshChart(newChartData, musicsData);
       });
       chartTabs.prepend(newButton);
     });
@@ -74,12 +96,11 @@ function refreshChartTabs(copyChartsData, musicsData) {
 }
 
 // 탭버튼을 누를때마다 실행됨 = 재활용가능 => 함수로만들자!
-function refreshChart(copyChartsData, musicsData) {
-  console.log('copyChartsData: ', copyChartsData);
-  if (copyChartsData) {
-    const currentChart = copyChartsData.find(({ id }) => id === currentTab);
-    const { musics } = currentChart;
-    console.log('currentChart:', currentChart);
+function refreshChart(chartData, musicsData) {
+  console.log('chartData: ', chartData);
+  if (chartData) {
+    const { musics } = chartData;
+    console.log('chartData:', chartData);
 
     chartContainer.innerHTML = musics.reduce((acc, musicId, index) => {
       const { title, authors, coverImg } = musicsData.find(
@@ -130,9 +151,12 @@ function refreshTime() {
 async function init() {
   const chartsData = await fetchChartsData();
   const copyChartsData = Object.values(chartsData);
+
+  const chartData = await fetchChartData(chartId);
   const musicsData = await fetchMusicsData();
+
   refreshChartTabs(copyChartsData, musicsData);
-  refreshChart(copyChartsData, musicsData);
+  refreshChart(chartData, musicsData);
   refreshTime();
 }
 

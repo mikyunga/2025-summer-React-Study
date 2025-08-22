@@ -1,0 +1,10 @@
+extends ../layout 
+
+block content 
+    h1 게시글 작성
+    form(action="/posts/create", method="post") 
+        label(for="title") 제목
+        input#title(type="text", name="title")
+        label(for="content") 내용
+        textarea#content(name="content")
+        button 제출

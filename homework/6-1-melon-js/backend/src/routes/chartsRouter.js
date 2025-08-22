@@ -20,10 +20,12 @@ const chartsRouter = Router();
  *      ]
  */
 chartsRouter.get('/', (req, res) => {
-  return res.json(chartsData);
+  return res.json({
+    status: 'success',
+    message: 'read successfully',
+    data: chartsData,
+  });
 });
-
-export default chartsRouter;
 
 // Read
 /**
@@ -52,27 +54,29 @@ export default chartsRouter;
   },
  */
 
-// chartsRouter.get('/:chartId', (req, res) => {
-//   // 1단계
-//   const { chartId } = req.params;
+chartsRouter.get('/:chartId', (req, res) => {
+  // 1단계
+  const { chartId } = req.params;
 
-//   // 유효성 검사
-//   if (!chartId)
-//     return res.status(400).json({
-//       status: 'failed',
-//       message: 'chartId must exist',
-//     });
+  // 유효성 검사
+  if (!chartId)
+    return res.status(400).json({
+      status: 'failed',
+      message: 'chartId must exist',
+    });
 
-//   const foundChart = chartsData.find((item) => item.id === parseInt(chartId));
-//   if (!foundChart)
-//     return res
-//       .status(404)
-//       .json({ status: 'failed', message: 'chart not found' });
+  const foundChart = chartsData.find((item) => item.id === parseInt(chartId));
+  if (!foundChart)
+    return res
+      .status(404)
+      .json({ status: 'failed', message: 'chart not found' });
 
-//   // 2,3단계
-//   return res.status(200).json({
-//     status: 'success',
-//     message: 'read successfully',
-//     data: foundChart,
-//   });
-// });
+  // 2,3단계
+  return res.status(200).json({
+    status: 'success',
+    message: 'read successfully',
+    data: foundChart,
+  });
+});
+
+export default chartsRouter;

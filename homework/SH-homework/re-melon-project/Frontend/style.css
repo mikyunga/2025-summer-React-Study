@@ -1,0 +1,238 @@
+body {
+  font-family: "Pretendard", sans-serif;
+}
+
+/* 자주 사용하는 색상 함수 */
+:root {
+  --white: #ffffff;
+  --white-70: rgba(255, 255, 255, 0.6);
+  --white-30: rgba(255, 255, 255, 0.3);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --main: #06c038;
+  --main-30: rgb(0, 232, 23, 0.3);
+}
+
+/* 정가운데 정렬 */
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* (소제목) 현재 차트 시간대 타이틀 */
+.sub-title {
+  color: var(--white-70);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03rem;
+}
+
+/* 모바일 사이즈 적용 */
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 393px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: black;
+  gap: 1rem;
+}
+
+/* @@ 상단 헤더 css (멜론 차트) */
+.chart-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* 타이틀 묶기 */
+.title-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* 타이틀 스타일 */
+.chart-title {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.title-group > img {
+  height: 1.5rem;
+}
+
+/* 전체보기 버튼 */
+.more-btn {
+  all: unset;
+  color: var(--white-70);
+  cursor: pointer;
+  height: 100%;
+}
+
+/* 테마 선택 칸 */
+.chart-tabs {
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+  overflow-x: auto;
+  display: flex;
+  gap: 0.4rem;
+  scroll-snap-type: x;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chart-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari에서 스크롤바 감춤 */
+}
+
+/* 테마 선택 버튼 */
+.tab-btn {
+  all: unset;
+  width: fit-content;
+  white-space: nowrap;
+  padding: 0.8rem 1.3rem;
+  font-size: 14px;
+  color: white;
+  border: 1px solid var(--white-30);
+  letter-spacing: 0.02rem;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.tab-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 선택된 버튼 스타일 */
+.tab-btn.active {
+  background-color: var(--main);
+  border: 1px solid var(--main);
+}
+
+/* 더보기 버튼*/
+.tab-btn--more {
+  all: unset;
+  display: flex;
+  align-items: center;
+  color: #00e81a;
+  font-size: 14px;
+  border: 1px solid var(--main-30);
+  padding: 0.8rem 1rem 0.8rem 1.3rem;
+  border-radius: 50px;
+  white-space: nowrap;
+  cursor: pointer;
+  gap: 0.1rem;
+}
+
+.tab-btn--more > img {
+  width: 14px;
+  height: 14px;
+}
+
+/* @@ 차트 리스트 (노래) */
+.chart-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+/* 노래 하나하나  */
+.chart-item {
+  all: unset;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1.3rem;
+  padding: 0.3rem 0;
+}
+
+.chart-item__rank {
+  color: white;
+}
+
+.chart-item__title {
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.rank-same {
+  color: var(--white-70);
+  padding-top: 0.1rem;
+}
+
+/* 순위에 있는 노래 제목 및 아티스트 묶음 */
+.chart-item__album {
+  width: 55%;
+  overflow: hidden;
+}
+
+/* 아티스트명 */
+.chart-item__artist {
+  width: 100%;
+  font-size: 13px;
+  margin-top: 0.3rem;
+  color: var(--white-70);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.chart-item__img {
+  width: 42px;
+  height: 42px;
+  border-radius: 3px;
+}
+
+.chart-item__play {
+  all: unset;
+  cursor: pointer;
+}
+
+/* 차트 가로 스크롤 */
+.chart-wrapper {
+  overflow-x: auto;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+}
+
+.chart-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.chart-scroll {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(4, min-content);
+  grid-auto-columns: 100%;
+  row-gap: 0.8rem;
+}
+
+/* .chart-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+} */
+
+/* @@ 탑백 전체듣기 버튼 */
+.play-btn {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.8rem 0;
+  background-color: var(--white-20);
+  border-radius: 5px;
+  cursor: pointer;
+  gap: 0.2rem;
+}
+
+/* 텍스트 */
+.play-btn > .play-btn__title {
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.03rem;
+}

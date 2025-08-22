@@ -1,0 +1,132 @@
+const musicsData = [
+  {
+    id: 1,
+    title: "Golden",
+    authors: ["HUNTR/X", "EJAE", "Mark Sonnenblick"],
+    coverImg: "/img/Golden.jpg",
+  },
+  {
+    id: 2,
+    title: "Soda Pop",
+    authors: ["KPop Demon Hunters Cast", "Danny Chung"],
+    coverImg: "/img/SodaPop.jpg",
+  },
+  {
+    id: 3,
+    title: "뛰어(JUMP)",
+    authors: ["BLACKPINK"],
+    coverImg: "/img/Jump.jpg",
+  },
+  {
+    id: 4,
+    title: "FAMOUS",
+    authors: ["ALLDAY PROJECT"],
+    coverImg: "/img/Famous.jpg",
+  },
+  {
+    id: 5,
+    title: "Dirty Work",
+    authors: ["aespa"],
+    coverImg: "/img/DirtyWork.jpg",
+  },
+  {
+    id: 6,
+    title: "Drowning",
+    authors: ["WOODZ"],
+    coverImg: "/img/Drowning.jpg",
+  },
+  {
+    id: 7,
+    title: "시작의 아이",
+    authors: ["마크툽 (MAKTUB)"],
+    coverImg: "/img/StartKid.jpg",
+  },
+  {
+    id: 8,
+    title: "너에게 닿기를",
+    authors: ["10CM"],
+    coverImg: "/img/TouchYou.jpg",
+  },
+  {
+    id: 9,
+    title: "Your Idol",
+    authors: [
+      "KPop Demon Hunters Cast",
+      "Danny Chung",
+      "Saja Boys",
+      "Andrew Choi",
+      "Neckwav",
+      "Kevin Woo",
+      "samUIL Lee",
+    ],
+    coverImg: "/img/YourIdol.jpg",
+  },
+  {
+    id: 10,
+    title: "모르시나요(PROD.로코베리)",
+    authors: ["조째즈"],
+    coverImg: "/img/DontKnow.jpg",
+  },
+  {
+    id: 11,
+    title: "어제보다 슬픈 오늘",
+    authors: ["우디 (Woody)"],
+    coverImg: "/img/SadToday.jpg",
+  },
+  {
+    id: 12,
+    title: "Whiplash",
+    authors: ["aespa"],
+    coverImg: "/img/Whiplash.jpg",
+  },
+  {
+    id: 13,
+    title: "WICKED",
+    authors: ["ALLDAY PROJECT"],
+    coverImg: "/img/Wicked.jpg",
+  },
+  {
+    id: 14,
+    title: "like JENNIE",
+    authors: ["제니 (JENNIE)"],
+    coverImg: "/img/likeJennie.jpg",
+  },
+  {
+    id: 15,
+    title: "HOME SWEET HOME (feat. 태양, 대성)",
+    authors: ["G-DRAGON"],
+    coverImg: "/img/HomeSweetHome.jpg",
+  },
+  {
+    id: 16,
+    title: "Never Ending Story",
+    authors: ["아이유"],
+    coverImg: "/img/NeverEndingStory.jpg",
+  },
+  {
+    id: 17,
+    title: "청춘만화",
+    authors: ["이무진"],
+    coverImg: "/img/YouthComics.jpg",
+  },
+  {
+    id: 18,
+    title: "눈물참기",
+    authors: ["QWER"],
+    coverImg: "/img/DontCry.jpg",
+  },
+  {
+    id: 19,
+    title: "How It's Done",
+    authors: ["HUNTR/X", "EJAE", "Mark Sonnenblick"],
+    coverImg: "/img/HowItsDone.jpg",
+  },
+  {
+    id: 20,
+    title: "TOO BAD (feat. Anderson .Paak)",
+    authors: ["G-DRAGON"],
+    coverImg: "/img/TooBad.jpg",
+  },
+];
+
+export default musicsData;
